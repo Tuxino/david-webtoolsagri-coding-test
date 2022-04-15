@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->default('CONTRACTOR');
+            $table->string('role')->default('ADMIN');
+            //$table->id('organisation_id')->references->('id')->on('organisations')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();  
