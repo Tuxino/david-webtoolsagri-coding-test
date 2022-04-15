@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Faker\Provider\Internet;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,11 +15,27 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // Create a default user for testing
-        User::factory()->create([
-            'email' => 'admin@example.com',
-        ]);
 
-        User::factory()->count(100)->create();
+        $faker = \Faker\Factory::create();
+ 
+        // Create some Admin users
+        for ($i = 0; $i < 5; $i++) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => $faker->password,
+                'role' => 'ADMIN'
+            ]);
+        }
+
+        // Create some Contractor users
+        for ($i = 0; $i < 5; $i++) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => $faker->password,
+                'role' => 'CONTRACTOR'
+            ]);
+        }
     }
 }
