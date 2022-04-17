@@ -24,6 +24,8 @@ Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/organisations', [OrganisationController::class, 'index']);
 
+Route::post('/organisation', [OrganisationController::class, 'store']);
+
 Route::get('/roles', [RoleController::class, 'index']);
 
 

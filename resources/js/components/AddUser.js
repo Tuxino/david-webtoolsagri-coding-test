@@ -4,7 +4,6 @@ class AddUser extends Component {
 
     constructor(props) {
         super(props);
-        // this.state.newUser.role = {value:'Admin'}
         this.state = {
             user: {
                 name: '',

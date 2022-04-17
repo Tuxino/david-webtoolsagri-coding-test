@@ -12,4 +12,15 @@ class OrganisationController extends Controller
     {
         return Organisation::all();
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'org' => 'required'
+        ]);
+
+        $Organisation = Organisation::create($request->all());
+
+        return response()->json($Organisation, 201);
+    }
 }
