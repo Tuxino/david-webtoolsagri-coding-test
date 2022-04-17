@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Organisation;
 use Illuminate\Database\Seeder;
 
-class OrganisationsTableSeeder extends Seeder
+class OrganisationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,9 +17,9 @@ class OrganisationsTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
  
         // Create some Orgs
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             Organisation::create([
-                'name' => $faker->company
+                'org' => $faker->company
             ]);
         }
     }

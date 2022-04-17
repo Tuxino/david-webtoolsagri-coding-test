@@ -4,8 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Organisation;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\OrganisationsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,12 @@ use App\Http\Controllers\OrganisationsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/users', [UsersController::class, 'index']);
+Route::get('/users', [UserController::class, 'index']);
 
-Route::post('/user', [UsersController::class, 'store']);
+Route::post('/user', [UserController::class, 'store']);
 
-Route::get('/organisations', [OrganisationsController::class, 'index']);
+Route::get('/organisations', [OrganisationController::class, 'index']);
+
+Route::get('/roles', [RoleController::class, 'index']);
 
 
