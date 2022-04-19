@@ -8,8 +8,8 @@ class AddUser extends Component {
             user: {
                 name: '',
                 email: '',
-                role: '',
-                organisation: '',
+                role_id: 1, // Not sure if this is best practice but I initialised the state to first element of the select
+                organisation_id: 1, // Might be better to grab the current state of the component rather than initialise?
                 password: ''   
             },
             organisations: [],
@@ -32,16 +32,12 @@ class AddUser extends Component {
     }
     
     handleInput(key, e) {
-        // alert(key);
-        // alert(e.target.value);
         var state = Object.assign({}, this.state.user);
         state[key] = e.target.value;
         this.setState({user: state });
     }
 
     handleChange(key, e) {
-        console.log(key);
-        console.log(e.target.value);
         var state = Object.assign({}, this.state.user);
         state[key] = e.target.value;
         this.setState({user: state });
@@ -49,54 +45,44 @@ class AddUser extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { name, email, password} = this.state.user;
-        var organisation = this.state.value;
-        console.log(name);
-        console.log(email);
-        console.log(password);
-        console.log(organisation);      
+        this.props.onAdd(this.state.user);    
     }
-
+    // TODO: remove all the awful non-breaking space in the near future
     render() {
         return(
             <div>
                 <h2>Add New Employee</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label>Name:</label>
+                        <label>Name:</label>&nbsp;&nbsp;
                         <input name="name" placeholder='Name' value={this.state.user.name} onChange={(e)=>this.handleInput('name', e)}></input>
-                    </div>
-                    <div className="form-group">
-                        <label>Email:</label>  
+                        &nbsp;&nbsp;
+                        <label>Email:</label>&nbsp;&nbsp;
                         <input name="email" placeholder='Email' value={this.state.user.email} onChange={(e)=>this.handleInput('email', e)}></input>
-                    </div>
-                    <div className="form-group">
-                        <label>Password:</label>  
+                        &nbsp;&nbsp;
+                        <label>Password:</label>&nbsp;&nbsp;  
                         <input name="password" placeholder='Password' value={this.state.user.password} onChange={(e)=>this.handleInput('password', e)}></input>
                     </div>
                     <div className="form-group">
-                        <label>Organisation:</label> 
-                        <select value={this.state.value} onChange={(e)=>this.handleChange('organisation', e)}>
-                        {this.state.organisations.map((org) => {
-                            return <option key={org.id} value={org.id}>{org.org}</option>
-                        })}
+                        <label>Organisation:</label>&nbsp;&nbsp; 
+                        <select value={this.state.user.organisation_id} onChange={(e)=>this.handleChange('organisation_id', e)}>
+                            {this.state.organisations.map((org) => {
+                                return <option key={org.id} value={org.id}>{org.org}</option>
+                            })}
                         </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Role</label>
-                        <select value={this.state.value} onChange={this.handleChange}> 
-                        {this.state.roles.map((role) => {
-                            return <option key={role.id} value={role.id}>{role.role}</option>
-                        })}
+                        &nbsp;&nbsp;
+                        <label>Role</label>&nbsp;&nbsp;
+                        <select value={this.state.user.role_id} onChange={(e)=>this.handleChange('role_id', e)}> 
+                            {this.state.roles.map((role) => {
+                                return <option key={role.id} value={role.id}>{role.role}</option>
+                            })}
                         </select>
-                    </div>
-
-                    <input type="submit" value="Submit" />
+                        &nbsp;&nbsp;
+                        <input type="submit" value="Submit" />
+                    </div>                   
                 </form>
             </div>
         )
-
     }
-
 }
 export default AddUser;

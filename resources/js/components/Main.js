@@ -14,11 +14,9 @@ class Main extends Component {
 
     componentDidMount() {
         fetch('/api/users')
-        .then(response => { return response.json(); })
         .then(users => { this.setState({ users }); });
 
         fetch('/api/organisations')
-        .then(response => { return response.json(); })
         .then(organisations => { this.setState({ organisations }); });
     }
 
@@ -56,9 +54,6 @@ class Main extends Component {
             },
             body: JSON.stringify(user)
         })
-        .then(response => {
-            return response.json();
-        })
         .then(data => {
             //update the state of the users
             this.setState((prevState)=> ({
@@ -76,10 +71,8 @@ class Main extends Component {
             },
             body: JSON.stringify(organisation)
         })
-        .then(response => {
-            return response.json();
-        })
         .then(data => {
+            //update the state of the organisations visible
             this.setState((prevState)=> ({
                 organisations: prevState.organisations.concat(data)
             }))
@@ -89,6 +82,7 @@ class Main extends Component {
     render() {
         return (
             <div>
+                <h2 style={{textAlign: "center"}}>Farmer Joe's Company Employee Register</h2>
                 <table className="table" >
                     <thead>
                         <tr>
@@ -104,6 +98,7 @@ class Main extends Component {
                     </tbody>
                 </table>
                 <AddUser onAdd={this.handleAddUser} /> 
+                <h2 style={{textAlign: "center"}}>Current Organiations</h2>
                 <table className="table" >
                     <thead>
                         <tr>

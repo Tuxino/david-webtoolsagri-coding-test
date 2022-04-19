@@ -15,8 +15,9 @@ class OrganisationController extends Controller
 
     public function store(Request $request)
     {
+        // Only validation needed at this point is on the name. Could extend later on
         $this->validate($request, [
-            'org' => 'required'
+            'org' => 'required|unique:organisations'
         ]);
 
         $Organisation = Organisation::create($request->all());

@@ -1,9 +1,4 @@
 @extends('layouts.app')
-<?php 
-
-//$version = app()->version(); echo $version;
-    //var_dump($Users);
-?>
 @section('content')
 <!doctype html>
 <div class="container"/>
@@ -16,7 +11,6 @@
             <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
         </head>
         <body>
-        <h2 style="text-align: center">Farmer Joe's Company Employee Register</h2>
             <div id="root"></div>
             <script src="{{mix('js/app.js')}}" ></script>
         </body>

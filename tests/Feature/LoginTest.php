@@ -15,7 +15,7 @@ class LoginTest extends TestCase
     /**
      * @test
      */
-    public function it_should_allow_users_to_log_in_with_correct_credentials()
+    public function test_accept_user_valid_creds()
     {
         $user = User::factory()->create();
 
@@ -33,7 +33,7 @@ class LoginTest extends TestCase
     /**
      * @test
      */
-    public function it_should_reject_users_from_log_in_with_invalid_credentials()
+    public function test_reject_user_invalid_creds()
     {
         $user = User::factory()->create();
 

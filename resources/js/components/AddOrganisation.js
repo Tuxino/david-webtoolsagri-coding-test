@@ -29,10 +29,12 @@ class AddOrganisation extends Component {
                 <h2>Add New Organisation</h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label>Name:</label>
+                        <label>Name:</label>&nbsp;&nbsp;
                         <input name="org" placeholder='Organisation' value={this.state.org} onChange={(e)=>this.handleInput('org', e)}></input>
+                        &nbsp;&nbsp;
+                        <input type="submit" value="Submit" />
                     </div>
-                    <input type="submit" value="Submit" />
+                    
                 </form>
             </div>
         )
