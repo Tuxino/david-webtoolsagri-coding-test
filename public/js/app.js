@@ -65903,7 +65903,7 @@ var AddOrganisation = /*#__PURE__*/function (_Component) {
   _createClass(AddOrganisation, [{
     key: "handleInput",
     value: function handleInput(key, e) {
-      var state = Object.assign({}, this.state.newProduct);
+      var state = Object.assign({}, this.state.newOrg);
       state[key] = e.target.value;
       this.setState({
         newOrg: state
@@ -66053,7 +66053,8 @@ var AddUser = /*#__PURE__*/function (_Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.onAdd(this.state.user);
-    }
+    } // TODO: remove all the awful non-breaking space in the near future
+
   }, {
     key: "render",
     value: function render() {
@@ -66096,7 +66097,7 @@ var AddUser = /*#__PURE__*/function (_Component) {
           key: org.id,
           value: org.id
         }, org.org);
-      })), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Role\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      })), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Role"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         value: this.state.user.role_id,
         onChange: function onChange(e) {
           return _this3.handleChange('role_id', e);
@@ -66258,6 +66259,7 @@ var Main = /*#__PURE__*/function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
+        //update the state of the organisations visible
         _this4.setState(function (prevState) {
           return {
             organisations: prevState.organisations.concat(data)
@@ -66282,7 +66284,7 @@ var Main = /*#__PURE__*/function (_Component) {
         }
       }, "Current Organiations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Organisation"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderOrganisations())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddOrganisation__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ID"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Organisation"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.renderOrganisations())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddOrganisation__WEBPACK_IMPORTED_MODULE_3__["default"], {
         onAdd: this.handleAddOrganisation
       }));
     }

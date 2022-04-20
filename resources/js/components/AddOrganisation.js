@@ -13,7 +13,7 @@ class AddOrganisation extends Component {
     }
 
     handleInput(key, e) {
-        var state = Object.assign({}, this.state.newProduct); 
+        var state = Object.assign({}, this.state.newOrg); 
         state[key] = e.target.value;
         this.setState({newOrg: state });
     }

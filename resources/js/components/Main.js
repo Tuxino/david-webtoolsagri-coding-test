@@ -14,9 +14,11 @@ class Main extends Component {
 
     componentDidMount() {
         fetch('/api/users')
+        .then(response => { return response.json(); })
         .then(users => { this.setState({ users }); });
 
         fetch('/api/organisations')
+        .then(response => { return response.json(); })
         .then(organisations => { this.setState({ organisations }); });
     }
 
@@ -54,6 +56,7 @@ class Main extends Component {
             },
             body: JSON.stringify(user)
         })
+        .then(response => { return response.json(); })
         .then(data => {
             //update the state of the users
             this.setState((prevState)=> ({
@@ -71,6 +74,7 @@ class Main extends Component {
             },
             body: JSON.stringify(organisation)
         })
+        .then(response => { return response.json(); })
         .then(data => {
             //update the state of the organisations visible
             this.setState((prevState)=> ({
